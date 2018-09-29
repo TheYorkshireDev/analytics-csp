@@ -11,13 +11,98 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <title>Testing Google Analytics CSP</title>
 
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <h1>Testing Google Analytics CSP</h1>
+
     <p>
-        A simple site to assist in fine tuning the CSP rules required for Google Analytics.
+        A simple site to assist in fine tuning the CSP rules required for
+        Google Analytics.
     </p>
+
+    <h2>Experiment</h2>
+
+    <p>
+        To determine the complete set of CSP rules required for Google
+        Analytics to work for everybody, I have tested with a variety of
+        browsers on both windows and macOS platforms.
+    </p>
+
+    <p>
+        The current CSP rules enforced are:
+        <code>
+    default-src 'none' ;
+    script-src 'self' www.googletagmanager.com www.google-analytics.com;
+    img-src 'self' www.google-analytics.com;
+    connect-src www.google-analytics.com;
+    upgrade-insecure-requests;
+    block-all-mixed-content;
+    base-uri https://analytics-csp.azurewebsites.net/;
+    report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly;"
+        </code>
+    </p>
+
+    <h2>Results</h2>
+
+    <table class="tg">
+        <tr>
+            <th class="tg-0lax"></th>
+            <th class="tg-0lax"><strong>Chrome 69</strong></th>
+            <th class="tg-0lax"><strong>Firefox 62</strong></th>
+            <th class="tg-0lax"><strong>Opera 55</strong></th>
+            <th class="tg-0lax"><strong>Edge</strong></th>
+            <th class="tg-0lax"><strong>Internet Explorer 11</strong></th>
+            <th class="tg-0lax"><strong>Safari 12</strong></th>
+        </tr>
+        <tr>
+            <td class="tg-0lax"><strong>Windows 10 Pro (1803)</strong></td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">Nothing reported in console, but default-src
+                violations on report-uri <sup>&#10013;</sup></td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">N/A</td>
+        </tr>
+        <tr>
+            <td class="tg-0lax"><strong>macOS Sierra (v10.12.6)</strong></td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">Nothing reported in console, but default-src
+                violations on report-uri <sup>&#10013;</sup></td>
+            <td class="tg-0lax">None reported</td>
+            <td class="tg-0lax">N/A</td>
+            <td class="tg-0lax">N/A</td>
+            <td class="tg-0lax">None reported</td>
+        </tr>
+    </table>
+
+    <h3>&#10013;</h3>
+
+    <p>
+        Firefox was the only browser to report violations to the CSP rules
+        outlined above. Strangely, these violations did not show up in the
+        console of the browser but was reported to <a href="https://report-uri.com">https://report-uri.com</a>
+    </p>
+
+    <p>
+        One of the reports sent to <a href="https://report-uri.com">https://report-uri.com</a>
+        is below:
+        <code>
+{
+    "csp-report": {
+        "blocked-uri": "",
+        "document-uri": "https://analytics-csp.azurewebsites.net/",
+        "original-policy": "default-src 'none'; script-src https://analytics-csp.azurewebsites.net https://www.googletagmanager.com https://www.google-analytics.com; img-src https://analytics-csp.azurewebsites.net https://www.google-analytics.com; connect-src https://www.google-analytics.com; upgrade-insecure-requests; block-all-mixed-content; base-uri https://analytics-csp.azurewebsites.net/; report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly",
+        "referrer": "",
+        "violated-directive": "default-src"
+    }
+}
+        </code>
+    </p>
+
+    <hr>
 
     <p>
         Full source code for the website is on GitHub at:
@@ -27,8 +112,6 @@
     <p>
         You can find me on Twitter <a href="https://twitter.com/TheYorkshireDev">@TheYorkshireDev</a>
     </p>
-
-    <hr>
 
 </body>
 
