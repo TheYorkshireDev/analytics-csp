@@ -35,12 +35,13 @@
         <code>
     default-src 'none' ;
     script-src 'self' www.googletagmanager.com www.google-analytics.com;
+    style-src 'self' ;
     img-src 'self' www.google-analytics.com;
     connect-src www.google-analytics.com;
     upgrade-insecure-requests;
     block-all-mixed-content;
     base-uri https://analytics-csp.azurewebsites.net/;
-    report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly;"
+    report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly;
         </code>
     </p>
 
