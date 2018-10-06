@@ -40,8 +40,6 @@
     connect-src www.google-analytics.com;
     upgrade-insecure-requests;
     block-all-mixed-content;
-    base-uri https://analytics-csp.azurewebsites.net/;
-    report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly;
         </code>
     </p>
 
@@ -60,8 +58,7 @@
         <tr>
             <td class="tg-0lax"><strong>Windows 10 Pro (1803)</strong></td>
             <td class="tg-0lax">None reported</td>
-            <td class="tg-0lax">Nothing reported in console, but default-src
-                violations on report-uri <sup>&#10013;</sup></td>
+            <td class="tg-0lax">None reported</td>
             <td class="tg-0lax">None reported</td>
             <td class="tg-0lax">None reported</td>
             <td class="tg-0lax">None reported</td>
@@ -70,38 +67,13 @@
         <tr>
             <td class="tg-0lax"><strong>macOS Sierra (v10.12.6)</strong></td>
             <td class="tg-0lax">None reported</td>
-            <td class="tg-0lax">Nothing reported in console, but default-src
-                violations on report-uri <sup>&#10013;</sup></td>
+            <td class="tg-0lax">None reported</td>
             <td class="tg-0lax">None reported</td>
             <td class="tg-0lax">N/A</td>
             <td class="tg-0lax">N/A</td>
             <td class="tg-0lax">None reported</td>
         </tr>
     </table>
-
-    <h3>&#10013;</h3>
-
-    <p>
-        Firefox was the only browser to report violations to the CSP rules
-        outlined above. Strangely, these violations did not show up in the
-        console of the browser but was reported to <a href="https://report-uri.com">https://report-uri.com</a>
-    </p>
-
-    <p>
-        One of the reports sent to <a href="https://report-uri.com">https://report-uri.com</a>
-        is below:
-        <code>
-{
-    "csp-report": {
-        "blocked-uri": "",
-        "document-uri": "https://analytics-csp.azurewebsites.net/",
-        "original-policy": "default-src 'none'; script-src https://analytics-csp.azurewebsites.net https://www.googletagmanager.com https://www.google-analytics.com; img-src https://analytics-csp.azurewebsites.net https://www.google-analytics.com; connect-src https://www.google-analytics.com; upgrade-insecure-requests; block-all-mixed-content; base-uri https://analytics-csp.azurewebsites.net/; report-uri https://theyorkshiredev.report-uri.com/r/d/csp/reportOnly",
-        "referrer": "",
-        "violated-directive": "default-src"
-    }
-}
-        </code>
-    </p>
 
     <hr>
 
